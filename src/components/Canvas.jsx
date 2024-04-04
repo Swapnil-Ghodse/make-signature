@@ -1,13 +1,21 @@
 import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { resetClearScreen } from "../redux/drawSplice";
 
 function Canvas() {
+  const strokeColor = useSelector( (state)=> state.draw.strokeColor );
+  const strokeSize = useSelector( (state)=> state.draw.strokeSize );
+  const clear = useSelector( state => state.draw.clear);
+  const dispatch = useDispatch();
+
   useEffect(() => {
+
     const canvas = document.querySelector("#signature-canvas");
 
     const ctx = canvas.getContext("2d");
 
-    ctx.fillRect(25, 25, 100, 100);
-    ctx.strokeStyle = '#000000';
+    ctx.strokeStyle = strokeColor;
+    ctx.lineWidth = strokeSize;
 
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
@@ -38,11 +46,11 @@ function Canvas() {
         [lastX, lastY] = [event.offsetX, event.offsetY];
     });
     
-canvas.addEventListener('mouseup', ()=>isDrawing=false);
-canvas.addEventListener('mouseout', ()=>isDrawing=false);
+  canvas.addEventListener('mouseup', ()=>isDrawing=false);
+  canvas.addEventListener('mouseout', ()=>isDrawing=false);
 
 
-  }, []);
+  }, [strokeColor, strokeSize]);
 
   return (
     <div>
