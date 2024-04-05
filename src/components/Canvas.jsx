@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { resetClearScreen } from "../redux/drawSplice";
+import { useSelector } from "react-redux";
 
 function Canvas() {
   const strokeColor = useSelector( (state)=> state.draw.strokeColor );
   const strokeSize = useSelector( (state)=> state.draw.strokeSize );
-  const clear = useSelector( state => state.draw.clear);
-  const dispatch = useDispatch();
-
+  
   useEffect(() => {
 
     const canvas = document.querySelector("#signature-canvas");
