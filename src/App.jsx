@@ -1,6 +1,6 @@
 import Canvas from "./components/Canvas";
 import { useDispatch, useSelector } from "react-redux";
-import { changeStrokeSize, clearScreen, pickColor } from "./redux/drawSplice";
+import { changeStrokeSize, clearScreen, pickColor, resetSetting } from "./redux/drawSplice";
 
 function App() {
   const dispatch = useDispatch();
@@ -59,8 +59,10 @@ function App() {
       <div >
         <Canvas />
       </div>
-      <div className="m-auto py-4">
-        <button type="button" className="btn btn-success base-100" onClick={()=>downloadImage()}>Download</button>
+      <div className="m-auto py-4 flex gap-4">
+        <button type="button" className="btn btn-success" onClick={()=>downloadImage()}>Download</button>
+        <button type="button" className="btn btn-active text-xl" onClick={()=>dispatch(resetSetting())}>reset</button>
+
       </div>
     </div>
   );

@@ -20,10 +20,13 @@ export const mainSplice = createSlice({
         },
         resetClearScreen: (state)=>{
             state.clear = initialState.clear;
+        },
+        resetSetting: (state)=>{
+            return initialState;
         }
 
     }
 });
 
-export const {pickColor, changeStrokeSize, clearScreen, resetClearScreen} = mainSplice.actions;
+export const {pickColor, changeStrokeSize, clearScreen, resetClearScreen, resetSetting} = mainSplice.actions;
 export default mainSplice.reducer;
